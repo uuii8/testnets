@@ -19,31 +19,31 @@ echo
 
 if [[ -z "${GH_URL}" ]]; then
   echo "GH_URL in not set, required. Ex: https://github.com/tharsis/evmos"
-  exit 0
+  exit 1
 fi
 if [[ -z "${DAEMON}" ]]; then
   echo "DAEMON is not set, required. Ex: evmosd, gaiad etc"
-  exit 0
+  exit 1
 fi
 if [[ -z "${DENOM}" ]]; then
   echo "DENOM in not set, required. Ex: stake, aphoton etc"
-  exit 0
+  exit 1
 fi
 if [[ -z "${GO_VERSION}" ]]; then
   echo "GO_VERSION in not set, required. Ex: 1.15.2, 1.16.6 etc."
-  exit 0
+  exit 1
 fi
 if [[ -z "${CHAIN_ID}" ]]; then
   echo "CHAIN_ID in not set, required."
-  exit 0
+  exit 1
 fi
 if [[ -z "${PRELAUNCH_GENESIS_URL}" ]]; then
   echo "PRELAUNCH_GENESIS_URL (genesis file url) in not set, required."
-  exit 0
+  exit 1
 fi
 if [[ -z "${GENTXS_DIR}" ]]; then
   echo "GENTXS_DIR in not set, required."
-  exit 0
+  exit 1
 fi
 
 command_exists () {
@@ -69,7 +69,6 @@ else
   sudo mv go /usr/local
 
   echo "" >> ~/.profile
-  echo 'export GOPATH=$HOME/go' >> ~/.profile
   echo 'export GOROOT=/usr/local/go' >> ~/.profile
   echo 'export GOBIN=$GOPATH/bin' >> ~/.profile
   echo 'export PATH=$PATH:/usr/local/go/bin:$GOBIN' >> ~/.profile
